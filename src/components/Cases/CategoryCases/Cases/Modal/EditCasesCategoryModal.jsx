@@ -66,7 +66,7 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
             });
 
             const saveChanges = (data) => {
-                data?.id=getCategoryCases.id 
+                data.id=getCategoryCases.id 
                 onUpdateCategoryCases(data);
                 reset();
                 onClose();
