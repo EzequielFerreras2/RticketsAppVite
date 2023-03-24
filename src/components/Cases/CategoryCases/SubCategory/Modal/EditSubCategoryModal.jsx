@@ -34,10 +34,10 @@ const EditSubCategoryModal = ({open,onClose,getSubCategory}) => {
   const subCa = async(data) =>{
     const SubCate = await data;
 
-    if(SubCate.category._id !== undefined || SubCate !== undefined)
+    if(SubCate.category?._id !== undefined || SubCate !== undefined)
     {
-      setValue("subcategory",SubCate.subcategory);
-      setCategoryS(SubCate.category._id);
+      setValue("subcategory",SubCate?.subcategory);
+      setCategoryS(SubCate?.category._id);
     };
   };
 
@@ -49,11 +49,11 @@ const EditSubCategoryModal = ({open,onClose,getSubCategory}) => {
 
   //Actualizar Cambios
   const saveChanges = (data) => { 
-  if (data.category === '')
+  if (data?.category === '')
   {
-    data.category = getSubCategories.category._id;
+    data?.category = getSubCategories.category._id;
   }
-    data.id= getSubCategories.id;
+    data?.id= getSubCategories.id;
     onUpdateSubCategory(data);
     reset();
     onClose();
