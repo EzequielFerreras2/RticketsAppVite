@@ -102,7 +102,7 @@ export const useCasesStore = () => {
               icon: 'success',
               title: 'Caso Creado.',
               showConfirmButton: false,
-              timer: 2500,
+              timer: 1000,
 
           })
         };
@@ -171,10 +171,18 @@ const onDeleteCase =async(val) =>{
             icon: 'success',
             title: 'Caso Eliminado.',
             showConfirmButton: false,
-            timer: 2500,
+            timer: 1000,
             
         })
         }
+
+        if(user.rol==="Admin")
+          {
+            onGetCases();
+          }
+          else{
+            onGetCasesByUser(id);
+          };
   } 
   catch ({response})
    {
