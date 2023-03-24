@@ -88,15 +88,6 @@ export const useCasesStore = () => {
           /*Post admin email*/
           await rticketsApp.post(`/email/createcasesadminemail`,data.Case);
 
-          if(user.rol==="Admin")
-          {
-            onGetCases();
-          }
-          else{
-            onGetCasesByUser(id);
-          };
-          
-
           await Swal.fire({
               position: 'center',
               icon: 'success',
@@ -104,7 +95,20 @@ export const useCasesStore = () => {
               showConfirmButton: false,
               timer: 1000,
 
-          })
+          });
+
+          setTimeout(()=>{
+            if(user.rol==="Admin")
+            {
+              onGetCases();
+            }
+            else{
+              onGetCasesByUser(id);
+            };
+            
+          },1000);
+
+
         };
     } 
     catch ({response})
@@ -176,13 +180,16 @@ const onDeleteCase =async(val) =>{
         })
         }
 
-        if(user.rol==="Admin")
+        setTimeout(()=>{
+          if(user.rol==="Admin")
           {
             onGetCases();
           }
           else{
             onGetCasesByUser(id);
           };
+          
+        },1000);
   } 
   catch ({response})
    {
