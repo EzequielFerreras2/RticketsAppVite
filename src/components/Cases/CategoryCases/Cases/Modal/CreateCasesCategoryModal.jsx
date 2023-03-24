@@ -29,7 +29,7 @@ const CreateCasesCategoryModal = ({open,onClose}) => {
     const handleSelectPriorityChange = (event) => {setPriorityS(event.target.value);};
 
     const selectedCategory =async(data)=>{
-       await onGetSubCategoryByCategory(data.id);
+       await onGetSubCategoryByCategory(data?.id);
        setSubCateogryS("");
     };
 

@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material';
-import { Box } from '@mui/system';
 import { useCateoryStore } from '../../../../../store/category/useCategoryStore';
 import { useSubCategoryStore } from '../../../../../store/subcategory/useSubCategory';
 import{ priorityList} from '../../../../../helpers/List/priority';
@@ -31,11 +30,11 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
         const SubCate = await data;
         if(SubCate !== undefined)
         {
-            setValue('title',getCategoryCases.title);
-            setCateogryS(getCategoryCases.category._id);
-            setSubCateogryS(getCategoryCases.subcategory._id);
-            setPriorityS(getCategoryCases.priority);
-            setValue('description',getCategoryCases.description);
+            setValue('title',getCategoryCases?.title);
+            setCateogryS(getCategoryCases?.category._id);
+            setSubCateogryS(getCategoryCases?.subcategory._id);
+            setPriorityS(getCategoryCases?.priority);
+            setValue('description',getCategoryCases?.description);
         };
       };
   
@@ -67,7 +66,7 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
             });
 
             const saveChanges = (data) => {
-                data.id=getCategoryCases.id 
+                data?.id=getCategoryCases.id 
                 onUpdateCategoryCases(data);
                 reset();
                 onClose();
