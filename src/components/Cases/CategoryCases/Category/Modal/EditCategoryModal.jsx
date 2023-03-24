@@ -35,7 +35,7 @@ const [category, setCategory] = useState({});
       
       useEffect(() => {
        
-        setValue('category', category.category)
+        setValue('category', category?.category)
         
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [category]);
@@ -57,7 +57,7 @@ const [category, setCategory] = useState({});
 
 
     const saveChanges = (data) => {
-        data.id=category.id;
+        data.id=category?.id;
         onUpdateCategory(data);
         onClose();
     };

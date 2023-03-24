@@ -37,7 +37,7 @@ const EditSubCategoryModal = ({open,onClose,getSubCategory}) => {
     if(SubCate.category?._id !== undefined || SubCate !== undefined)
     {
       setValue("subcategory",SubCate?.subcategory);
-      setCategoryS(SubCate?.category._id);
+      setCategoryS(SubCate?.category?._id);
     };
   };
 
@@ -51,9 +51,9 @@ const EditSubCategoryModal = ({open,onClose,getSubCategory}) => {
   const saveChanges = (data) => { 
   if (data?.category === '')
   {
-    data.category = getSubCategories.category._id;
+    data.category = getSubCategories?.category._id;
   }
-    data.id= getSubCategories.id;
+    data.id= getSubCategories?.id;
     onUpdateSubCategory(data);
     reset();
     onClose();
