@@ -88,7 +88,7 @@ export const useCasesStore = () => {
           /*Post admin email*/
           await rticketsApp.post(`/email/createcasesadminemail`,data.Case);
 
-          await Swal.fire({
+          Swal.fire({
               position: 'center',
               icon: 'success',
               title: 'Caso Creado.',
@@ -170,7 +170,7 @@ const onDeleteCase =async(val) =>{
     const {data} = await rticketsApp.delete(`/cases/${val.id}`);
       if (data.ok === true)
         {
-          await Swal.fire({
+           Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'Caso Eliminado.',
