@@ -31,8 +31,8 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
         if(SubCate !== undefined)
         {
             setValue('title',getCategoryCases?.title);
-            setCateogryS(getCategoryCases?.category._id);
-            setSubCateogryS(getCategoryCases?.subcategory._id);
+            setCateogryS(getCategoryCases.category?._id);
+            setSubCateogryS(getCategoryCases.subcategory?._id);
             setPriorityS(getCategoryCases?.priority);
             setValue('description',getCategoryCases?.description);
         };
