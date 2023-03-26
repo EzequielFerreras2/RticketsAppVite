@@ -14,6 +14,7 @@ const UserDashboard = () => {
 const {CasesByUser, onGetCasesByUser}= useCasesStore();
 const {user}=useAtuhStore();
 const navigate = useNavigate();
+const createCase ="/cases/createcases"
 
 const casesV = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="En Verificacion");
 const casesO = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="Abierto");
@@ -54,7 +55,7 @@ useEffect(() => {
                                 
                             </CardContent>
                             <CardActions>
-                                <Button size="small" onClick={()=>navigate("/cases/createcases")}>Ver Mas</Button>
+                                <Button size="small" onClick={()=>navigate(createCase)}>Ver Mas</Button>
                             </CardActions>
                         </Card>
                     </Grid>
@@ -76,7 +77,7 @@ useEffect(() => {
                                 
                             </CardContent>
                             <CardActions>
-                                <Button size="small" onClick={()=>navigate("/cases/createcases")}>Ver Mas</Button>
+                                <Button size="small" onClick={()=>navigate(createCase)}>Ver Mas</Button>
                             </CardActions>
                         </Card>
                     </Grid>
@@ -97,7 +98,7 @@ useEffect(() => {
                                 
                             </CardContent>
                             <CardActions>
-                                <Button size="small" onClick={()=>navigate("/cases/createcases")}>Ver Mas</Button>
+                                <Button size="small" onClick={()=>navigate(createCase)}>Ver Mas</Button>
                             </CardActions>
                         </Card>
                     </Grid>
