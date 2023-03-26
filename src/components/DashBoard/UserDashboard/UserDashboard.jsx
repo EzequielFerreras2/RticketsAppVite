@@ -17,9 +17,11 @@ const navigate = useNavigate();
 
 const casesV = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="En Verificacion");
 const casesO = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="Abierto");
-const casesC = CasesByUser?.filter( res => calculateDate(res?.openDate) <=5 && res.status ==="Cerrado Satisfactorio");
+const casesC = CasesByUser?.filter( res => calculateDate(res?.closeDate) <=5 && res.status ==="Cerrado Satisfactorio");
+console.log(calculateDate("03/22/2023"))
+console.log(casesC)
+console.log(CasesByUser)
 
-console.log(casesC?.length)
 useEffect(() => {
     onGetCasesByUser(user.id);
 }, []);
