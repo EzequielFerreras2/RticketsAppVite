@@ -49,13 +49,15 @@ return (
     <div>
         <br/>
         <br/>
-        <Typography variant='h3'>Directorio</Typography>
+        <Typography variant='h3'>
+            Directorio
+        </Typography>
         <br/>
         <Box sx={{ width: '100%' }}>    
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Extenciones" {...a11yProps(0)} />
-            <Tab label="Flotas" {...a11yProps(1)} />
+                <Tab label="Extenciones" {...a11yProps(0)} />
+                <Tab label="Flotas" {...a11yProps(1)} />
             </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
