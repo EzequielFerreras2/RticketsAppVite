@@ -82,32 +82,35 @@ export const useCasesStore = () => {
         const {data} = await rticketsApp.post(`/cases/${val.openUser}/${val.categoryCases}`,val);
         if (data.ok === true)
         {
+
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Caso Creado.',
+            showConfirmButton: false,
+            timer: 1000,
+
+        });
+
+        setTimeout(()=>{
+          if(user.rol==="Admin")
+          {
+            onGetCases();
+          }
+          else{
+            onGetCasesByUser(id);
+          };
+          
+        },1000);
+
+
           /*Post user email*/
           await rticketsApp.post(`/email/createcasesemail`,data.Case);
 
           /*Post admin email*/
           await rticketsApp.post(`/email/createcasesadminemail`,data.Case);
 
-          Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Caso Creado.',
-              showConfirmButton: false,
-              timer: 1000,
-
-          });
-
-          setTimeout(()=>{
-            if(user.rol==="Admin")
-            {
-              onGetCases();
-            }
-            else{
-              onGetCasesByUser(id);
-            };
-            
-          },1000);
-
+         
 
         };
     } 
