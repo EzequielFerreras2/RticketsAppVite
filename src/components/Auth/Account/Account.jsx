@@ -26,12 +26,9 @@ const Account = ({handleClose}) => {
     setAccount(account)
   }, [account]);
 
-  
-   
     return (
         <div>
             <br/>
-            
              <Box sx={{width:450}}>
               <Grid 
                 container
@@ -39,7 +36,6 @@ const Account = ({handleClose}) => {
                 justifyContent="center"
                 alignItems="center"
                 spacing={1}
-                
               >
                 <Grid item xs={3}>
                 <Stack direction="row" justifyContent="center" spacing={2}>
@@ -47,12 +43,8 @@ const Account = ({handleClose}) => {
                   alt={letter}
                   sx={{ width: 80, height: 80 ,color: "white", backgroundColor: '#0d47a1'}}
                   />
-          
-              
                   </Stack>
-                
                 </Grid>
-                
                 <Grid  item xs={3}>
                 <Typography  sx={{textAlign:"center"}} variant="h5" >
                       {Account?.name}
@@ -67,16 +59,9 @@ const Account = ({handleClose}) => {
                       {Account?.departament}
                     </Typography>
                 </Grid>
-
-                    
-
-                
-                    <Grid sx={{m:1}} item xs={3}
-              
-                    >
+                    <Grid sx={{m:1}} item xs={3}>
                     {
                       user.rol==="Admin"?
-
                       <ButtonGroup variant="outlined"  >
                         <Button onClick={()=>handleAdminAccount()} 
                         variant="outlined" size="medium" startIcon={<PeopleAltTwoToneIcon />}  sx={{ color: "white", backgroundColor: '#0d47a1'}}>Administrar Cuentas
@@ -84,26 +69,16 @@ const Account = ({handleClose}) => {
                         <Button onClick={()=>handleCategoryCases()} 
                         variant="outlined"  size="medium" startIcon={<CategoryTwoToneIcon />}  sx={{ color: "white", backgroundColor: '#0d47a1'}}>Categorias de Casos
                         </Button>
-                        
                       </ButtonGroup>
                       :
                       <div></div>
                     }
-                    
-                    
-                    
                     </Grid>
                     <Grid item xs={3}>
                       <Button onClick={()=>handleLogout()} variant="outlined" size="medium" startIcon={<LogoutIcon />}  sx={{ color: "white", backgroundColor: 'Red',mt:1}}>LogOut</Button>
                     </Grid>
-                  
-                
-                  
                 </Grid>
              </Box>
-             
-                
-              
         </div>
     );
 }
