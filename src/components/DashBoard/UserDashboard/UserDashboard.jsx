@@ -28,17 +28,13 @@ useEffect(() => {
         <div>
             <br/>
             <br/>
-         
-            <Typography variant='h1' sx={{color:'black'}}>
-                DashBoard
-            </Typography>
+            <Typography variant='h3'>DashBoard</Typography>
             <br/>
             <Box>
                <Grid
                container
                direction="row"
                justifyContent="center"
-               
                spacing={2}
                >
                     <Grid item xs={1} md={6}>
