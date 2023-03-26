@@ -17,6 +17,7 @@ import UserRoute from "./UserRoute";
 import Login from "../components/Auth/Login/Login";
 import CategoryCases from "../components/Cases/CategoryCases/CategoryCases";
 import AdminAccount from "../components/Auth/Account/AdminAccount/AdminAccount";
+import Directory from "../components/Directory/Directory";
 
 const InRoute = ({updateNavbar}) => {
     return (
@@ -41,6 +42,7 @@ const InRoute = ({updateNavbar}) => {
                       <Route path="/cases/createcases" element={<CreateCases/>}/>
                       <Route path="/home" element={<Homes setNavbar={() =>updateNavbar()}/>}/>
                       <Route path="/account" element={<Account/>}/>
+                      <Route path="/directory" element={<Directory/>}/>
 
                         {/* Admin Route*/}
                       <Route element={<AdminRoute/>} >

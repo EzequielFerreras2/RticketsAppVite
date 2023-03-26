@@ -1,6 +1,6 @@
 import React from 'react'
 import PeopleIcon from '@mui/icons-material/People';
-
+import TtyIcon from '@mui/icons-material/Tty';
 import DashboardCustomizeTwoToneIcon from '@mui/icons-material/DashboardCustomizeTwoTone';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -28,10 +28,10 @@ export const mainSideBarItems =  [
     },
     {
         id:2,
-        icon:<PlagiarismTwoToneIcon style={{ fill: '#0072ea' }}/>,
-        label:'Casos',
-        route:'Casos',
-        hidden:true
+        icon:<TtyIcon style={{ fill: '#0072ea' }}/>,
+        label:'Directorio',
+        route:'directory',
+        hidden:false
     },
     {
         id:3,

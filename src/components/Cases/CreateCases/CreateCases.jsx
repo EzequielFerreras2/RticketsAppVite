@@ -292,7 +292,10 @@ const filterByCloseStatus =async()=>{
     return (
         <div>
             <br/>
-            <h1>Casos</h1>
+            <br/>
+            <Typography variant='h3' sx={{color:'black'}}>
+              Casos
+            </Typography>
             <Grid container direction={"row"} justifyContent="flex-end" alignItems="center" sx={{height:'100%',}}>
                 <Grid item  >
                   <SpeedDialMenuCases updateList={getCasesByRol} setOpenCreateModal={setOpenCreateModal}/>
@@ -301,9 +304,9 @@ const filterByCloseStatus =async()=>{
             <Grid container spacing={1}>
             <Grid item xs={4}>
                   <Accordion  sx={{mt:2,mb:2 ,backgroundColor: acorColors }}>
-                     <AccordionSummary
-                     expandIcon={<ExpandMoreIcon />}
-                     aria-controls="panel1a-content"
+                    <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
                     id="panel1a-header"
                     >
                     <Typography sx={{ fontSize: 20 }}><b>Filtrar Por:</b></Typography>
