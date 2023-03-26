@@ -45,7 +45,6 @@ const Account = ({handleClose}) => {
                 <Stack direction="row" justifyContent="center" spacing={2}>
                   <Avatar
                   alt={letter}
-                  src="/static/images/avatar/1.jpg"
                   sx={{ width: 80, height: 80 ,color: "white", backgroundColor: '#0d47a1'}}
                   />
           
