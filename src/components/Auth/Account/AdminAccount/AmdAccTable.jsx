@@ -33,6 +33,7 @@ const AmdAccTable = ({Account}) => {
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 250 },
+        { field: 'status', headerName: 'Estatus', width: 150 },
         { field: 'name', headerName: 'Nombre', width: 250 },
         { field: 'email', headerName: 'Email', width: 300 },
         { field: 'rol', headerName: 'Rol', width: 130 },
