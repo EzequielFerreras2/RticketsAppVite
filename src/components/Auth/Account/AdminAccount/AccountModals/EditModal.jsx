@@ -8,7 +8,7 @@ import * as Yup from 'yup'
 import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
 import {rolList} from '../../../../../helpers/List/rolList'
 import {companyList,departamentList} from '../../../../../helpers/List/compAndDepartList'
-
+import {accStatusList} from '../../../../../helpers/List/accStatus'
 
 const EditModall = ({open, onClose, getAccount}) => {
 
@@ -19,6 +19,7 @@ const EditModall = ({open, onClose, getAccount}) => {
     const [rol, setRol] = useState("")
     const [company, setCompany] = useState("")
     const [departament, setDepartament] = useState("")
+    const [accStatus, setAccstatus] = useState("")
   
         
     //estilo Modal
@@ -59,6 +60,7 @@ const EditModall = ({open, onClose, getAccount}) => {
             setRol(acc.rol)
             setCompany(acc.company)
             setDepartament(acc.departament)
+            setAccstatus(acc.status)
         }   
     };
 
@@ -82,11 +84,13 @@ const EditModall = ({open, onClose, getAccount}) => {
     const handleSelectRolChange = (event) => {setRol(event.target.value);};
     const handleSelectDepartamentChange = (event) => {setDepartament(event.target.value);};
     const handleSelectCompanyChange = (event) => {setCompany(event.target.value);};
+    const handleSelectAccStatus = (event) => {setAccstatus(event.target.value);};
 
     const saveChanges =(data) =>{
         
         setValue("departament", data.departament)
         setValue("company", data.company)
+        setValue("status", data.status)
         data.id= getAccount.id;
         // data.password = getAccount.password
         onUdateUsers(data);
@@ -118,7 +122,7 @@ const EditModall = ({open, onClose, getAccount}) => {
                     <FormControl fullWidth>
                     <InputLabel id="rol">Rol</InputLabel>
                     <Select
-
+                        
                         labelId="rol"
                         id="rol"
                         value={rol}
@@ -190,6 +194,30 @@ const EditModall = ({open, onClose, getAccount}) => {
                       
                     </Select>
                   </FormControl>
+                  <FormControl fullWidth>
+                    <InputLabel id="status">Status</InputLabel>
+                    <Select
+                      labelId="status"
+
+                      id="status"
+                      value={accStatus}
+                      {...register("status")}
+                      label="status"
+                      onChange={handleSelectAccStatus}
+                      error={!!errors.status}
+                      
+                    >
+                      {
+                        accStatusList.map((accStatus)=>{
+                          return (
+                            <MenuItem key={accStatus} value={accStatus}>{accStatus}</MenuItem>
+                          );
+                          })
+                        };
+                      
+                    </Select>
+                  </FormControl>
+                  
                 </Box>
             </Grid>
         </Grid>

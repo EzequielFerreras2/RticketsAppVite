@@ -8,7 +8,7 @@ import * as Yup from 'yup'
 import { useAccountStore } from '../../../../../store/accounts/useAccountStore';
 import {rolList} from '../../../../../helpers/List/rolList'
 import {companyList,departamentList} from '../../../../../helpers/List/compAndDepartList'
-
+import {accStatusList} from '../../../../../helpers/List/accStatus'
 
 const EditAccModal = ({open, onClose, getAccount}) => {
 
@@ -19,6 +19,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
     const [rol, setRol] = useState("")
     const [company, setCompany] = useState("")
     const [departament, setDepartament] = useState("")
+    const [accStatus, setAccstatus] = useState("")
   
         
     //estilo Modal
@@ -43,7 +44,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
         departament: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
         rol: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
         company: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
-            
+        status: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),   
             
     });
 
@@ -59,6 +60,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
             setRol(acc.rol)
             setCompany(acc.company)
             setDepartament(acc.departament)
+            setAccstatus(acc.status)
         }   
     };
 
@@ -82,11 +84,13 @@ const EditAccModal = ({open, onClose, getAccount}) => {
     const handleSelectRolChange = (event) => {setRol(event.target.value);};
     const handleSelectDepartamentChange = (event) => {setDepartament(event.target.value);};
     const handleSelectCompanyChange = (event) => {setCompany(event.target.value);};
+    const handleSelectAccStatus = (event) => {setAccstatus(event.target.value);};
 
     const saveChanges =(data) =>{
         
         setValue("departament", data.departament)
         setValue("company", data.company)
+        setValue("status", data.status)
         data.id= getAccount.id;
         // data.password = getAccount.password
         onUdateUsers(data);
@@ -98,35 +102,26 @@ const EditAccModal = ({open, onClose, getAccount}) => {
         <Grid container spacing={2}>
             <Grid item xs={6}>
                 <Box sx={modalStyles.inputFields}>
-                    <TextField
-                        
+                    <TextField 
                         id="name"
                         label="Nombre"
                         {...register('name')}
-                        
-                        
                     />
                     <TextField
-                       
                         id="email"
                         label="Email"
                         {...register('email')}
-                        
-                        
                     />
-                    
                     <FormControl fullWidth>
                     <InputLabel id="rol">Rol</InputLabel>
                     <Select
-
                         labelId="rol"
                         id="rol"
                         value={rol}
                         {...register("rol")}
                         label="Rol"
                         onChange={handleSelectRolChange}
-                        error={!!errors.company}
-                        
+                        error={!!errors.company} 
                     >
                     {
                         rolList.map((rol)=>{
@@ -134,9 +129,30 @@ const EditAccModal = ({open, onClose, getAccount}) => {
                             <MenuItem key={rol} value={rol}>{rol} </MenuItem>
                           );
                           })
-                          
                     }; 
-                    
+                    </Select>
+                  </FormControl>
+                  <FormControl fullWidth>
+                    <InputLabel id="status">Status</InputLabel>
+                    <Select
+                      labelId="status"
+
+                      id="status"
+                      value={accStatus}
+                      {...register("status")}
+                      label="status"
+                      onChange={handleSelectAccStatus}
+                      error={!!errors.status}
+                      
+                    >
+                      {
+                        accStatusList.map((accStatus)=>{
+                          return (
+                            <MenuItem key={accStatus} value={accStatus}>{accStatus}</MenuItem>
+                          );
+                          })
+                        };
+                      
                     </Select>
                   </FormControl>
                     
@@ -154,7 +170,6 @@ const EditAccModal = ({open, onClose, getAccount}) => {
                       label="Compañia"
                       onChange={handleSelectCompanyChange}
                       error={!!errors.company}
-                     
                     >
                       {
                         companyList.map((company)=>{
@@ -171,7 +186,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
                     <InputLabel id="departament">Departamento</InputLabel>
                     <Select
                       labelId="departament"
-                     
+
                       id="departament"
                       value={departament}
                       {...register("departament")}
@@ -184,6 +199,29 @@ const EditAccModal = ({open, onClose, getAccount}) => {
                         departamentList.map((departament)=>{
                           return (
                             <MenuItem key={departament} value={departament}>{departament}</MenuItem>
+                          );
+                          })
+                        };
+                      
+                    </Select>
+                  </FormControl>
+                  <FormControl fullWidth>
+                    <InputLabel id="status">Status</InputLabel>
+                    <Select
+                      labelId="status"
+
+                      id="status"
+                      value={accStatus}
+                      {...register("status")}
+                      label="status"
+                      onChange={handleSelectAccStatus}
+                      error={!!errors.status}
+                      
+                    >
+                      {
+                        accStatusList.map((accStatus)=>{
+                          return (
+                            <MenuItem key={accStatus} value={accStatus}>{accStatus}</MenuItem>
                           );
                           })
                         };
@@ -203,7 +241,7 @@ const EditAccModal = ({open, onClose, getAccount}) => {
         <BasicModal
         open={open}
         onClose={onClose}
-        title="Editar Usuario"
+        title="Editar Usuario!!"
         subTitle=""
         content={getContent()}
         onSubmit={handleSubmit(saveChanges)}
