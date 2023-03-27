@@ -23,7 +23,6 @@ export const useAtuhStore = () =>{
             localStorage.setItem('id',data.uid);
             localStorage.setItem('token-init-date', new Date().getTime());
             dispatch(
-
                 logIn({
                     id:data.uid,
                     name:data.name,
@@ -35,14 +34,7 @@ export const useAtuhStore = () =>{
                 ));
 
         } catch ({response}) {
-
             const{data} = response;
-
-            console.log("Auth data");
-            console.log(data);
-
-            
-
             if(data.ok === false)
             {
                 Swal.fire({

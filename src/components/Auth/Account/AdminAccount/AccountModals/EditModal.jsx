@@ -40,12 +40,11 @@ const EditModall = ({open, onClose, getAccount}) => {
     const validationSchema = Yup.object().shape({
             
         name: Yup.string().required('Campo requerido').max(120, 'Nombre muy largo'),
-        email: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
-        departament: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
-        rol: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
-        company: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
-            
-            
+        email: Yup.string().required('Campo requerido').max(60, 'email muy largo'),
+        // departament: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
+        // rol: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
+        // company: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),
+        // status: Yup.string().required('Campo requerido').max(60, 'Nombre muy largo'),     
     });
 
     //Carga de datos desde la tabla.
