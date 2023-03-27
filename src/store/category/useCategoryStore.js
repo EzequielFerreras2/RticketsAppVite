@@ -5,51 +5,49 @@ import { getCategory } from './categorySlice';
 
 export const useCateoryStore =()=> {
 
-    const { Category } =  useSelector( state => state.category );
-    const dispatch = useDispatch();
+const { Category } =  useSelector( state => state.category );
+const dispatch = useDispatch();
 
-    const ongetCategory =async() =>{
+const ongetCategory =async() =>{
+    try {
+        const {data} = await rticketsApp.get('/cases/category');
+        const {category} = data; 
+        dispatch(getCategory(category));
+    } 
+    catch ({response})
+    {
+        const{data} = response;
+        if(data.ok === false)
+        {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: `${data.msg}.!!!`,
+            })
+        };
+    }
+};
 
-        try {
-            const {data} = await rticketsApp.get('/cases/category');
-            const {category} = data;
-            
-            dispatch(getCategory(category));
-        } 
-        catch ({response})
-         {
-            const{data} = response;
-            if(data.ok === false)
-            {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: `${data.msg}.!!!`,
-                  })
-            };
-            }
-            
-    };
-
-    const onCreateCategory = async(val)=>{
-
-        try {
-            const {data} = await rticketsApp.post('/cases/category',val);
-            if (data.ok === true)
-            {
+const onCreateCategory = async(val)=>{
+    try {
+        const {data} = await rticketsApp.post('/cases/category',val);
+        if (data.ok === true)
+        {
             Swal.fire({
                 position: 'center',
                 icon: 'success',
                 title: 'Categoria Creada.',
                 showConfirmButton: false,
-                timer: 2000,
+                timer: 1000,
                 
             })
-            }
-            ongetCategory();   
+        }
+        setTimeout(() => {
+            ongetCategory();
+        }, 1500);
         } 
         catch ({response})
-         {
+        {
             const{data} = response;
             if(data.ok === false)
             {
@@ -57,16 +55,14 @@ export const useCateoryStore =()=> {
                     icon: 'error',
                     title: 'Error',
                     text: `${data.msg}.!!!`,
-                  })
+                })
             };
-            }
-            
-            
-    };
+        }
+};
 
-    const onUpdateCategory = async(val)=>{
+const onUpdateCategory = async(val)=>{
 
-        try {
+    try {
             const {data} = await rticketsApp.put(`/cases/category/${val.id}`,val);
             if (data.ok === true)
             {
@@ -76,12 +72,13 @@ export const useCateoryStore =()=> {
                     title: 'Categoria Actualizada.',
                     showConfirmButton: false,
                     timer: 2000
-                  })
-                  
+                })
             }
-            ongetCategory();
-         } catch ({response})
-         {
+            setTimeout(() => {
+                ongetCategory();
+            }, 1500);
+        } catch ({response})
+        {
             const{data} = response;
             if(data.ok === false)
             {
@@ -89,15 +86,13 @@ export const useCateoryStore =()=> {
                     icon: 'error',
                     title: 'Error',
                     text: `${data.msg}.!!!`,
-                  })
+                })
             };
-            }
-    
-            
-    };
+        }
+};
 
-    const onDeleteCategory = async(val)=>{
-        try {
+const onDeleteCategory = async(val)=>{
+    try {
             const {data} = await rticketsApp.delete(`/cases/category/${val.id}`);
             if (data.ok === true)
             {
@@ -107,33 +102,32 @@ export const useCateoryStore =()=> {
                     title: 'Categoria Eliminada.',
                     showConfirmButton: false,
                     timer: 2000
-                  })
+                })
             }
-            ongetCategory();
-         } catch ({response})
-         {
-            const{data} = response;
-            if(data.ok === false)
-            {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: `${data.msg}.!!!`,
-                  })
-            };
-            }
-    
-            
-        
-    };
+            setTimeout(() => {
+                ongetCategory();
+            }, 1500);
+    } catch ({response})
+    {
+        const{data} = response;
+        if(data.ok === false)
+        {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: `${data.msg}.!!!`,
+            })
+        };
+    }
+};
 
-    return{
-        //Propieties
-        Category,
-        //Methos
-        ongetCategory,
-        onCreateCategory,
-        onUpdateCategory,
-        onDeleteCategory,
-    };
+return{
+    //Propieties
+    Category,
+    //Methos
+    ongetCategory,
+    onCreateCategory,
+    onUpdateCategory,
+    onDeleteCategory,
+};
 }
