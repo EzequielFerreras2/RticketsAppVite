@@ -18,7 +18,7 @@ export const store = configureStore({
   subCategory:subCategorySlice.reducer,
   categoryCases:categoryCasesSlice.reducer,
   cases:casesSlice.reducer,
-  Directory:directorySlice.reducer,
+  directory:directorySlice.reducer,
    
 
   },
