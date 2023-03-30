@@ -84,13 +84,13 @@ return (
                     </Tabs>
                 </Box>
                 <TabPanel value={value} index={0}>
-                    <DirectoryPhonesTab/>
+                    <DirectoryPhonesTab Phones={Phones}/>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <DirectoryFlotasTab/>
+                    <DirectoryFlotasTab Flotas={Flotas} />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    <DirectoryEmailTab/>
+                    <DirectoryEmailTab Emails={Emails}/>
                 </TabPanel>
             </Box>
 

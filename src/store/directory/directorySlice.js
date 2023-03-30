@@ -5,7 +5,7 @@ name: 'directory',
 initialState: {
 
     Emails:{},
-    Phones:{},
+    Phones:[],
     Flotas:{}
 
 
