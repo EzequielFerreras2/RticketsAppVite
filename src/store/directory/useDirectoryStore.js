@@ -28,6 +28,46 @@ const onGetEmails =async() =>{
     }
 };
 
+const onGetPhones =async() =>{
+    try {
+            const {data} = await rticketsApp.get('/directory/phones');
+            const {Phones} = data;
+            dispatch(getPhones(Phones));
+    } 
+    catch ({response})
+    {
+        const{data} = response;
+        if(data.ok === false)
+        {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: `${data.msg}.!!!`,
+            })
+        };
+    }
+};
+
+const onGetFlotas =async() =>{
+    try {
+            const {data} = await rticketsApp.get('/directory/flotas');
+            const {Flotas} = data;
+            dispatch(getFlotas(Flotas));
+    } 
+    catch ({response})
+    {
+        const{data} = response;
+        if(data.ok === false)
+        {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: `${data.msg}.!!!`,
+            })
+        };
+    }
+};
+
 
 
 return{
@@ -36,7 +76,9 @@ return{
     Phones,
     Flotas,
     //Methos
-    onGetEmails
+    onGetEmails,
+    onGetPhones,
+    onGetFlotas
     
 };
 }
