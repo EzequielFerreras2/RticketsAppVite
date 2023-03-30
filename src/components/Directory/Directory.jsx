@@ -7,6 +7,9 @@ import Box from '@mui/material/Box';
 import { useAtuhStore } from '../../store/auth/useAuthStore';
 import DevPage from '../../helpers/DevPage';
 import { useDirectoryStore } from '../../store/directory/useDirectoryStore';
+import DirectoryPhonesTab from './Tables/DirectoryPhonesTab';
+import DirectoryFlotasTab from './Tables/DirectoryFlotasTab';
+import DirectoryEmailTab from './Tables/DirectoryEmailTab';
 
 function TabPanel(props) {
 const { children, value, index, ...other } = props;
@@ -77,13 +80,17 @@ return (
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                         <Tab label="Extenciones" {...a11yProps(0)} />
                         <Tab label="Flotas" {...a11yProps(1)} />
+                        <Tab label="Correos" {...a11yProps(2)} />
                     </Tabs>
                 </Box>
                 <TabPanel value={value} index={0}>
-                    Extenciones
+                    <DirectoryPhonesTab/>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    Flotas
+                    <DirectoryFlotasTab/>
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                    <DirectoryEmailTab/>
                 </TabPanel>
             </Box>
 
