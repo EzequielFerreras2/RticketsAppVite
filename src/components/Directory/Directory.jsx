@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useAtuhStore } from '../../store/auth/useAuthStore';
 import DevPage from '../../helpers/DevPage';
+import { useDirectoryStore } from '../../store/directory/useDirectoryStore';
 
 function TabPanel(props) {
 const { children, value, index, ...other } = props;
@@ -42,11 +43,18 @@ return {
 
 export default function BasicTabs() {
 const [value, setValue] = React.useState(0);
-
+const {Emails,Flotas,Phones,onGetEmails,onGetFlotas,onGetPhones}= useDirectoryStore();
 const {user}= useAtuhStore();
 const handleChange = (event, newValue) => {
     setValue(newValue);
 };
+
+React.useEffect(() => {
+    onGetEmails();
+    onGetFlotas();
+    onGetPhones();
+}, [])
+
 
 return (
     <div>
