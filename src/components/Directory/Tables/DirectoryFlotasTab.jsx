@@ -6,7 +6,7 @@ const DirectoryFlotasTab = ({Flotas}) => {
     const columns = [
         { field: 'Nombre', headerName: 'Nombre', width: 300, },
         { field: 'Mobil', valueFormatter: ({value}) =>phoneNumberChange(value), headerName: 'Mobil', width: 130 },
-        { field: 'Departamento', headerName: 'Departamento', width: 200, },
+        { field: 'Departamento', headerName: 'Departamento', width: 250, },
         { field: 'Compania', headerName: 'Compañia', width: 350, },
         { field: 'Puesto', headerName: 'Puesto', width: 300, },
         
