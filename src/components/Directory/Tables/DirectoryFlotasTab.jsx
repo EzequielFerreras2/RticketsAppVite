@@ -6,8 +6,8 @@ const DirectoryFlotasTab = ({Flotas}) => {
     const columns = [
         { field: 'Nombre', headerName: 'Nombre', width: 300, },
         { field: 'Mobil', valueFormatter: ({value}) =>phoneNumberChange(value), headerName: 'Mobil', width: 130 },
-        { field: 'Compania', headerName: 'Compañia', width: 250, },
         { field: 'Departamento', headerName: 'Departamento', width: 200, },
+        { field: 'Compania', headerName: 'Compañia', width: 350, },
         { field: 'Puesto', headerName: 'Puesto', width: 300, },
         
     ];
@@ -20,7 +20,7 @@ return (
     columns={columns}
     pageSize={50}
     rowsPerPageOptions={[50]}
-    checkboxSelection
+    
     />
   </div>
 )
