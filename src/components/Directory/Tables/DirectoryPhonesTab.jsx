@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 
+
 const DirectoryPhonesTab = ({Phones}) => {
+
+ 
     const columns = [
         { field: 'Ext', headerName: 'Extencion', width: 130 },
         { field: 'Nombre', headerName: 'Nombre', width: 200, },
