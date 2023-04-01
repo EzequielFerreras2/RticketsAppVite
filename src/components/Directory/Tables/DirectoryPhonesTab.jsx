@@ -10,12 +10,12 @@ const DirectoryPhonesTab = ({Phones}) => {
 return (
     <div style={{ height: 700, width: '100%' }}>
     <DataGrid
-      rows={Phones}
-      getRowId={(row) => row.ID}
-      columns={columns}
-      pageSize={50}
-      rowsPerPageOptions={[50]}
-      checkboxSelection
+    rows={Phones}
+    getRowId={(row) => row.ID}
+    columns={columns}
+    pageSize={50}
+    rowsPerPageOptions={[50]}
+    checkboxSelection
     />
   </div>
 )
