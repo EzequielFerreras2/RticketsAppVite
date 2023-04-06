@@ -18,7 +18,7 @@ return (
     columns={columns}
     pageSize={50}
     rowsPerPageOptions={[50]}
-    checkboxSelection
+    
     />
   </div>
 )
