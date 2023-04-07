@@ -13,7 +13,6 @@ import { useCategoryCasesStore } from '../../../../../store/CategoryCases/useCat
 
 const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
 
-
     const{Category}= useCateoryStore();
     const {SubCategory}= useSubCategoryStore()
     const {onUpdateCategoryCases} = useCategoryCasesStore();
@@ -21,6 +20,7 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
     const [categoryS, setCateogryS] = useState("");
     const [subCategoryS, setSubCateogryS] = useState("");
     const [priorityS, setPriorityS] = useState("");
+    const [getCategory, setgetCategory] = useState({});
 
     const handleSelectCategoryChange = (event) => {setCateogryS(event.target.value);};
     const handleSelectSubCategoryChange = (event) => {setSubCateogryS(event.target.value);};
@@ -30,27 +30,31 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
         const SubCate = await data;
         if(SubCate !== undefined)
         {
-            setValue('title',getCategoryCases?.title);
-            setCateogryS(getCategoryCases.category?._id);
-            setSubCateogryS(getCategoryCases.subcategory?._id);
-            setPriorityS(getCategoryCases?.priority);
-            setValue('description',getCategoryCases?.description);
+            setValue('title',getCategory?.title);
+            setCateogryS(getCategory?.category._id);
+            setSubCateogryS(getCategory?.subcategory._id);
+            setPriorityS(getCategory?.priority);
+            setValue('description',getCategory?.description);
         };
-      };
-  
+    };
+
 
     useEffect(() => {
-      
-        
-        CasesCa(getCategoryCases)
+        setgetCategory(getCategoryCases)
 
     }, [getCategoryCases]);
 
+    useEffect(() => {
+        
+        CasesCa(getCategory)
+
+    }, [getCategory]);
+
             const validationSchema = Yup.object().shape({
                 title: Yup.string().required('Campo requerido'),
-                category: Yup.string().required('Campo requerido'),
-                subcategory: Yup.string().required('Campo requerido'),
-                priority: Yup.string().required('Campo requerido'),
+                // category: Yup.string().required('Campo requerido'),
+                // subcategory: Yup.string().required('Campo requerido'),
+                // priority: Yup.string().required('Campo requerido'),
                 description: Yup.string().required('Campo requerido') 
             });
 
@@ -65,8 +69,13 @@ const EditCasesCategoryModal = ({open,onClose,getCategoryCases}) => {
                 resolver: yupResolver(validationSchema)
             });
 
-            const saveChanges = (data) => {
-                data.id=getCategoryCase?.id 
+            const saveChanges = async(data) => {
+                data.category= getCategory?.category?._id
+                data.subcategory= getCategory?.subcategory?._id
+                data.priority=getCategory?.priority
+                data.id=getCategory?.id 
+                console.log("data")
+                console.log(data)
                 onUpdateCategoryCases(data);
                 reset();
                 onClose();

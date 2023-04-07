@@ -49,7 +49,6 @@ const EditModall = ({open, onClose, getAccount}) => {
 
     //Carga de datos desde la tabla.
     const account = async(data) =>{
-
         const acc = await data;
 
         if(acc?.length !== 0)
@@ -85,11 +84,11 @@ const EditModall = ({open, onClose, getAccount}) => {
     const handleSelectCompanyChange = (event) => {setCompany(event.target.value);};
     const handleSelectAccStatus = (event) => {setAccstatus(event.target.value);};
 
-    const saveChanges =(data) =>{
-        
-        setValue("departament", data.departament)
-        setValue("company", data.company)
-        setValue("status", data.status)
+    const saveChanges =async(data) =>{
+        data.departament = departament;
+        data.company=company;
+        data.status=accStatus;
+        data.rol = rol;
         data.id= getAccount.id;
         // data.password = getAccount.password
         onUdateUsers(data);

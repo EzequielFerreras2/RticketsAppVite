@@ -38,8 +38,7 @@ const ChangePassAccModal = ({open, onClose, getAccount}) => {
         password: Yup.string().required('Campo requerido').min(8, 'La contraseña debe ser mayor a 8 Caracteres')
         .max(36, 'La contraseña debe ser menor a 36 Caracteres'),
         confPassword: Yup.string().required('Campo requerido').min(8, 'La contraseña debe ser mayor a 8 Caracteres')
-        .max(36, 'La contraseña debe ser menor a 36 Caracteres').oneOf([Yup.ref('password')], 'Las contraseñas deben ser iguales'),
-          
+        .max(36, 'La contraseña debe ser menor a 36 Caracteres').oneOf([Yup.ref('password')], 'Las contraseñas deben ser iguales'), 
     });
 
     //useForm

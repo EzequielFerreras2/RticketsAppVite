@@ -54,10 +54,11 @@ catch ({response})
     const{data} = response;
     if(data.ok === false)
     {
+        console.log(data)
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: `${data.msg}.!!!`,
+            text: `${data}.!!!`,
         })
     };
     }
