@@ -55,14 +55,20 @@ const openCloseCases =(data,open,action)=>{
               var superIconsColor="#e0e0e0";
               var acorColors ="#e0e0e0";
               var statusChange = false;
+              var statusChangeUser = false;
+              var minCasesID= res.id?.slice(-7);
 
               if(res.casesCategory.priority==="Alta"){ superIconsColor="#b2102f"; };
               if(res.casesCategory.priority==="Media"){ superIconsColor="#ffb300"};
               if(res.casesCategory.priority==="Baja"){ superIconsColor="#27632a"};
 
-              if(res.status==="Cerrado" || res.status==="Cerrado Satisfactorio" ||res.status==="Cerrado Incorrecto" ||res.status==="Cerrado No Resuelto")
+              if(res.status==="Cerrado" || res.status==="Cerrado Satisfactorio" ||res.status==="Cerrado Incorrecto" ||res.status==="Cerrado No Resuelto" ||res.status==="Cerrado No Resuelto")
               {
                 statusChange=true;
+              }
+              if(res.status==="En Verificacion" )
+              {
+                statusChangeUser=true;
               }
 
               return(
@@ -88,7 +94,7 @@ const openCloseCases =(data,open,action)=>{
                                   <b>{res.casesCategory.title}</b> .
                                 </Typography>
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
-                                  <b>Caso #:</b> {res.id}
+                                  <b>Caso #:</b> {minCasesID}
                                 </Typography>
                                 <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                   <b>Estatus:</b> {res.status}.
@@ -98,6 +104,13 @@ const openCloseCases =(data,open,action)=>{
                                 </Typography>
                                 {
                                   statusChange? 
+                                    <Typography sx={{ fontSize: 16 }}  gutterBottom>
+                                    <b>Soporte:</b> {res.closeCaseUser.name}.
+                                  </Typography>
+                                  :<div></div>
+                                }
+                                {
+                                  statusChangeUser? 
                                     <Typography sx={{ fontSize: 16 }}  gutterBottom>
                                     <b>Soporte:</b> {res.closeCaseUser.name}.
                                   </Typography>
