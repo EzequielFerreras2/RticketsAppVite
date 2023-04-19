@@ -157,9 +157,6 @@ const openCloseCases =(data,open,action)=>{
                                         }
 
                                     {
-                                        statusChange? 
-                                      <div></div>
-                                      :
                                       <Accordion sx={{mt:2 ,backgroundColor:acorColors  }}>
                                         <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}

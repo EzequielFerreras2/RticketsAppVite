@@ -80,7 +80,7 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
           Swal.fire({
             icon: 'error',
             title: 'Error...',
-            text: `No existen Casos Con el ID: ${user.value.search}`
+            text: `No existe usuario Con el ID: ${user.value.search}`
           });
         }
         else{
@@ -96,7 +96,7 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
           Swal.fire({
             icon: 'error',
             title: 'Error...',
-            text: `No existen Casos Con el Id=D: ${user.value.search}`
+            text: `No existe usuario Con el Id=D: ${user.value.search}`
           });
 
         }
@@ -115,7 +115,7 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
           Swal.fire({
             icon: 'error',
             title: 'Error...',
-            text: `No existen Casos Con el Nombre: ${user.value.search}`
+            text: `No existe usuario Con el Nombre: ${user.value.search}`
           });
 
         }
@@ -131,7 +131,7 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
           Swal.fire({
             icon: 'error',
             title: 'Error...',
-            text: `No existen Casos Con el Nombre: ${user.value.search}`
+            text: `No existe usuario Con el Nombre: ${user.value.search}`
           });
 
         }
