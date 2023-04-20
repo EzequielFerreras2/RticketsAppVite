@@ -36,7 +36,6 @@ const currentOpenCard = openCases.slice(firstPostIndex,lastPostIndex);
 const currentCloseCard = closeCases.slice(firstPostIndex,lastPostIndex);
 const [openCreateModal, setOpenCreateModal] = useState(false);
 
-
 /* Arrows Funtions */
     const filterbyDate = async(date) =>{
     if(rol==="Admin")
@@ -72,9 +71,13 @@ const [openCreateModal, setOpenCreateModal] = useState(false);
 
   const filterByUser=async(user)=>{
     if(user.type ==="Id"){
+      console.log(user.value.search)
+    
       if(rol === "Admin")
       {
         const fbu = await AllCases.filter( res => res.openCaseUser._id === user.value.search);
+        console.log("ffub")
+        console.log(fbu,"Data")
         if(fbu.length===0){
           
           Swal.fire({
